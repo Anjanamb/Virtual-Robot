@@ -1,1 +1,1 @@
-# Virtual Robotics competition sem3
+# Virtual Robotics competition
