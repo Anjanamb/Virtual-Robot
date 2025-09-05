@@ -94,7 +94,7 @@ Virtual-Robot/
 
 ## License & Acknowledgements
 
-- **License**: *[Add license here—e.g., MIT]*  
+- **License**: MIT License – free to use and modify. Please cite the repository if used in research or coursework. 
 - **Authors**:  
   - **Anjana Bandara** (`Anjanamb`)  
   - Contributor: **Ayesh Rajakaruna** (`Ayesh‑Rajakaruna`) ([github.com](https://github.com/Anjanamb/Virtual-Robot))  
