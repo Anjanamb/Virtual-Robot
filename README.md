@@ -1,103 +1,107 @@
-# Virtual-Robot
+# Webots Virtual Robot – EN2532 Robot Design Competition
 
-> A simulated robot environment for the **EN2532 Robot Design Competition**, built using Webots to prototype, test, and visualize autonomous behaviors in a controlled virtual space.
-
----
-
-## Contents
-
-- [Overview](#overview)  
-- [Quickstart](#quickstart)  
-- [Repository Layout](#repository-layout)  
-- [Using the Simulation](#using-the-simulation)  
-- [Customization & Development](#customization--development)  
-- [Contribution Guidelines](#contribution-guidelines)  
-- [License & Acknowledgements](#license--acknowledgements)
+>A **Webots-based virtual robot** designed for the **EN2532 Robot Design Competition**.  
+>The robot is capable of **line following, wall following, gate navigation, box detection & catching, and color recognition** using simulated sensors and cameras.
 
 ---
 
-## Overview
+## Features
 
-This repository supports the **EN2532 Robot Design Competition** by providing a virtual simulation environment where participants can develop and test their robot behavior before real-world deployment.
-
-The project uses **Webots** as the core simulation engine, offering capabilities for:
-
-- Modeling robot mechanics and sensors
-- Running autonomous control software
-- Rapid iteration in a virtual setting
-
-Topics: `robotics-competition`, `webots` ([github.com](https://github.com/Anjanamb/Virtual-Robot))
+- **Line Following** – IR sensors track and follow predefined lines on the arena floor.  
+- **Wall Following** – Distance sensors help maintain a safe distance from arena boundaries.  
+- **Gate Navigation** – The robot can detect and interact with gates controlled by a secondary controller.  
+- **Box Catching with Arm Control** – Robotic arm motors pick and place boxes detected on the arena.  
+- **Color Detection** – Dual cameras (front & bottom) identify arena markings and colored boxes.  
 
 ---
 
-## Quickstart
+## Tech Stack
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Anjanamb/Virtual-Robot.git
-   cd Virtual-Robot
-   ```
-
-2. **Install Webots**  
-   If you don’t already have it, download and install [Webots](https://cyberbotics.com) (compatible with Windows/macOS/Linux).
-
-3. **Open the project**  
-   Launch Webots and open the simulation world file (e.g., `arena.wbt`) located within the project.
-
-4. **Run the simulation**  
-   Within Webots:
-   - Use the **Play** button to start.
-   - Observe the robot within the arena.
-   - Load or attach your control scripts.
+- **Simulation**: [Webots](https://cyberbotics.com/)  
+- **Languages**: C++ (controllers), Webots world configuration  
+- **Hardware (simulated)**:
+  - Distance sensors & IR sensors  
+  - Encoders & position sensors  
+  - DC motors & robotic arm  
+  - Dual cameras (front + bottom)  
 
 ---
 
-## Repository Layout
-
+## Repository Structure
 ```
 Virtual-Robot/
-├─ worlds/              # Webots world files (e.g., arenas, obstacles)
-├─ controllers/         # Control logic for robots (C++ or Python)
-├─ resources/           # Media and configuration (models, textures)
-├─ Makefile             # Build automation for compilation
-└─ README.md
+├── controllers/
+│ ├── Final/ # Main robot controller (C++ logic)
+│ │ └── Final.cpp
+│ └── gate_controller/ # Secondary controller for gate logic
+│ └── gate_controller.cpp
+│
+├── worlds/ # Webots simulation worlds & objects
+│ ├── arena.wbt
+│ ├── gate.wbo
+│ ├── robot.wbo
+│ └── *.stl
+│
+├── Video/ # Demonstration videos
+│ └── demo.mp4
+│
+└── README.md
 ```
 
-*(Folder names above are illustrative—please adapt based on your project structure.)* ([github.com](https://github.com/Anjanamb/Virtual-Robot))
+---
+
+## Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Anjanamb/Virtual-Robot.git
+cd Virtual-Robot
+```
+
+### 2. Install Webots
+
+Download and install the [latest Webots release](https://cyberbotics.com).
+Ensure you can run Webots and compile controllers (C++ toolchain required).
+
+### 3. Open the simulation
+
+- Launch Webots.
+- Open `worlds/arena.wbt`.
+
+### 4. Run the robot
+
+- Press Play in Webots.
+- The robot will start executing the behavior defined in `controllers/Final/Final.cpp`.
 
 ---
 
-## Using the Simulation
+## Usage
 
-- **Switch worlds**: Choose different arena setups from the `worlds/` directory.
-- **Edit control code**: Modify or create controller programs in `controllers/`, then rebuild (e.g., `make`).
-- **Inject sensors or logic**: Add sensors or behaviors, reconfigure the robot, and test in real-time.
-
----
-
-## Customization & Development
-
-- **Adding new worlds**: Copy an existing `.wbt` world file and adapt obstacle placements or arena design.
-- **Robot behavior**: Write autonomous routines in the `controllers/` folder using your preferred language; ensure they’re registered in `Makefile` or project config.
-- **Testing and debugging**: Use Webots’ visualization, real-time stepping, and performance counters to tune sensor processing and robot logic.
+- Switching arenas – Open any `.wbt` file in the `worlds/` directory.
+- Customizing behavior – Modify `Final.cpp` to adjust line-following thresholds, wall distances, or arm control.
+- Gate logic – Controlled by `controllers/gate_controller/`.
+- Debugging – Use Webots simulation console + 3D visualization for sensor feedback.
 
 ---
 
-## Contribution Guidelines
+## Demo
 
-1. Open an issue to propose new features or report problems.
-2. Fork the repository and create a branch like `feature/virtual-arena` or `fix/controller-bug`.
-3. Commit changes—add comments, unit tests (if applicable), and update documentation.
-4. Submit a Pull Request with a clear description of your updates.
+A sample run of the robot can be found in the [Video/](./Video/) folder.
+(You may also embed a GIF or YouTube link here for better visibility.)
 
 ---
 
-## License & Acknowledgements
+## License
 
-- **License**: MIT License – free to use and modify. Please cite the repository if used in research or coursework. 
-- **Authors**:  
-  - **Anjana Bandara** (`Anjanamb`)  
-  - Contributor: **Ayesh Rajakaruna** (`Ayesh‑Rajakaruna`) ([github.com](https://github.com/Anjanamb/Virtual-Robot))  
-- **Special thanks** to teammates and the EN2532 module for inspiration and support.
+MIT License – feel free to use, modify, and share.
+
+---
+
+## Authors & Credits
+
+- Anjana Bandara ([Anjanamb](https://github.com/Anjanamb/))
+- Ayesh Rajakaruna ([Ayesh-Rajakaruna](https://github.com/Ayesh-Rajakaruna))
+
+Special thanks to the EN2532 Robot Design Competition organizers and teammates.
 
 ---
